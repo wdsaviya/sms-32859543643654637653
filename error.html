@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url("https://telegra.ph/file/2afe4fa0add0b5b1a7c79.jpg"); /* Set the background image */
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .btn {
+      --color: #32dae3;
+      --color2: rgb(10, 25, 30);
+      width: 200px; /* Set a fixed width for the buttons */
+      padding: 0.8em 1.75em;
+      background-color: #25d366; /* Change button color to green */
+      border-radius: 50px; /* Make the button round */
+      border: 2px solid white; /* Add border around the button */
+      transition: .5s;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      z-index: 1;
+      font-weight: bold; /* Make the text bold */
+      font-size: 14px; /* Increase font size */
+      font-family: 'Roboto', 'Segoe UI', sans-serif;
+      text-transform: uppercase;
+      color: white; /* Change text color to white */
+      margin-bottom: 10px; /* Add margin to separate buttons */
+    }
+
+    .btn::after, .btn::before {
+      content: '';
+      display: block;
+      height: 300%; /* Increase the size of the pseudo-elements */
+      width: 300%; /* Increase the size of the pseudo-elements */
+      transform: skew(90deg) translate(-50%, -50%);
+      position: absolute;
+      inset: 50%;
+      left: 25%;
+      z-index: -1;
+      transition: .5s ease-out;
+      background-color: var(--color);
+    }
+
+    .btn::before {
+      top: -100%; /* Move the pseudo-element outside the button */
+      left: -100%; /* Move the pseudo-element outside the button */
+      transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+    }
+
+    .btn:hover::before {
+      transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+    }
+
+    .btn:hover::after {
+      transform: skew(45deg) translate(-50%, -50%);
+    }
+
+    .btn:hover {
+      color: var(--color2);
+    }
+
+    .btn:active {
+      filter: brightness(.7);
+      transform: scale(.98);
+    }
+
+    .red-btn {
+      background-color: red; /* Change button color to red */
+      color: white; /* Change text color to white */
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="redirect('https://replit.com/@Amilaprabath/PRABATH-MDQR-V2#read.txt')" class="btn red-btn">Click here if QR Code is not working</button>
+ 
+  <button onclick="redirect('https://replit.com/@Amilaprabath/PRABATH-MD-PAIR-CODEV2#README.md')" class="btn red-btn">Click here if Pair-Code is not working</button>
+
+  <script>
+    function redirect(url) {
+      setTimeout(function() {
+        window.open(url);
+      }, 2000); // Delay redirection for 2 seconds
+    }
+  </script>
+</body>
+</html>

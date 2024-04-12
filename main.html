@@ -19,11 +19,11 @@
 
     .btn {
       --color: #FF0000;
-      --color2: rgb(0, 0, 30);
+      --color2: rgb(0, 0, 100);
       width: 350px; /* Increase the width */
       padding: 1.2em 2.5em; /* Adjust padding */
       font-size: 20px; /* Adjust font size */
-      background-color: #25d366; /* Change button color to green */
+      background-color: blue; /* Change button color to green */
       border-radius: 50px; /* Make the button round */
       border: 2px solid white; /* Add border around the button */
       transition: .5s;
@@ -74,11 +74,58 @@
       filter: brightness(.7);
       transform: scale(.98);
     }
+
+.button {
+    display: block;
+    padding: 15px 30px;
+    margin: 10px auto;
+    font-size: 18px;
+    font-weight: bold; /* Bold text */
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 25px;
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    border: 2px solid #007bff; /* Blue border */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Shadow */
+  }
+  .button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  .button:active {
+    transform: scale(0.9); /* Shrink the button on press */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+  }
+  .button.red {
+    background-color: #ff0000; /* Red color */
+    border: 2px solid #ff0000; /* Red border */
+  }
+  .button.red:hover {
+    background-color: #cc0000; /* Darker red color on hover */
+  }
+  
+
   </style>
 </head>
 <body>
 
+
    <button onclick="redirect('/pair')" class="btn">PAIR-CODE</button>
-  <button onclick="redirect('https://prabath-md-qr-web.vercel.app/')" class="btn">QR-CODE</button>
+  <button onclick="redirect('https://saviya-md-qr.vercel.app/')" class="btn">QR-CODE</button>
+
+<button onclick="redirect('https://saviya-md.vercel.app/')" class="btn">SAVIYA-MD-OFFICIAL-WEBSITE</button>
+ 
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <button class="button red" onclick="setTimeout(function() { window.location.href='https://github.com/saviya55/Saviya-Md'; }, 1000)">GITHUB</button>
 </body>
 </html>

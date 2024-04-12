@@ -18,31 +18,31 @@
     }
 
     .btn {
-      --color: #FFC0CB;
+      --color: #32dae3;
       --color2: rgb(10, 25, 30);
-      width: 200px; /* Set a fixed width for the buttons */
-      padding: 0.8em 1.75em;
-      background-color: transparent;
-      border-radius: 6px;
-      border: .3px solid var(--color);
+      width: 350px; /* Increase the width */
+      padding: 1.2em 2.5em; /* Adjust padding */
+      font-size: 20px; /* Adjust font size */
+      background-color: #25d366; /* Change button color to green */
+      border-radius: 50px; /* Make the button round */
+      border: 2px solid white; /* Add border around the button */
       transition: .5s;
       position: relative;
       overflow: hidden;
       cursor: pointer;
       z-index: 1;
-      font-weight: 300;
-      font-size: 17px;
+      font-weight: bold; /* Make the text bold */
       font-family: 'Roboto', 'Segoe UI', sans-serif;
       text-transform: uppercase;
-      color: var(--color);
+      color: white; /* Change text color to white */
       margin-bottom: 10px; /* Add margin to separate buttons */
     }
 
     .btn::after, .btn::before {
       content: '';
       display: block;
-      height: 100%;
-      width: 100%;
+      height: 400%; /* Increase the size of the pseudo-elements */
+      width: 400%; /* Increase the size of the pseudo-elements */
       transform: skew(90deg) translate(-50%, -50%);
       position: absolute;
       inset: 50%;
@@ -53,8 +53,8 @@
     }
 
     .btn::before {
-      top: -50%;
-      left: -25%;
+      top: -100%; /* Move the pseudo-element outside the button */
+      left: -100%; /* Move the pseudo-element outside the button */
       transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
     }
 
@@ -78,9 +78,7 @@
 </head>
 <body>
 
-  <button onclick="window.open(`/pair`)" class="btn">pair code</button>
-  <button onclick="window.open(`https://saviya-md-qr.vercel.app/`)" class="btn">qr code</button>
-  <button onclick="window.open(`https://github.com/saviya55/Saviya-Md`)" class="btn">github</button>
-
+   <button onclick="redirect('/pair')" class="btn">PAIR-CODE</button>
+  <button onclick="redirect('https://prabath-md-qr-web.vercel.app/')" class="btn">QR-CODE</button>
 </body>
 </html>

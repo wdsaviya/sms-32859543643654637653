@@ -78,7 +78,7 @@ router.get('/', async (req, res) => {
 
                     try {
                         const PastebinAPI = require("pastebin-js");
-                        const pastebin = new PastebinAPI('MkQqFBaTW2cO2dlOZANHWhAGINXNJcNq');
+                        const pastebin = new PastebinAPI('mmmQwSeLvlJrj1FMJ-68WnGQnEgoNWk5');
                         let session = fs.readFileSync(rf, 'utf8');
                         await delay(500);
 

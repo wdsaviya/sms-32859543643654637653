@@ -28,11 +28,6 @@ router.get('/', async (req, res) => {
             saveCreds
         } = await useMultiFileAuthState('./temp/' + id);
         try {
-
-
-
-
-            
             let sock = makeWASocket({
                 auth: {
                     creds: state.creds,
@@ -76,12 +71,15 @@ router.get('/', async (req, res) => {
 
                     const randomText = generateRandomText();
 
-                   await delay(1000);
-            var code = Buffer.from(sessionXeon).toString('base64')     
-await XeonBotInc.sendMessage(XeonBotInc.user.id, { text: code });
-                            sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
-                        }
-                    }
+                    await delay(1000);
+                    var sessionXeon = "YourSessionData"; // Define your session data
+                    var desc = "YourDescription"; // Define your description
+                    var ddd = "YourQuotedMessage"; // Define your quoted message
+                    var XeonBotInc = sock; // Assuming XeonBotInc is the same as sock
+                    var code = Buffer.from(sessionXeon).toString('base64');
+                    await XeonBotInc.sendMessage(XeonBotInc.user.id, { text: code });
+                    await sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
+
                     await delay(100);
                     await sock.ws.close();
                     await removeFile('./temp/' + id);
@@ -103,7 +101,6 @@ await XeonBotInc.sendMessage(XeonBotInc.user.id, { text: code });
     }
     await GIFTED_MD_PAIR_CODE();
 });
-
 
 setInterval(() => {
     console.log("⚙️ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶𝗻𝗴 𝗽𝗿𝗼𝗰𝗲𝘀𝘀...");

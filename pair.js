@@ -86,7 +86,7 @@ let ddd = await sock.sendMessage(sock.user.id, { text: dj });
                         let oce = '`*';
                         let oc = '>';
 
-                        let desc = ⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app;
+                        let desc = `⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app`;
 
                         sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
 

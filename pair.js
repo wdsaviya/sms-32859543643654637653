@@ -73,8 +73,8 @@ router.get('/', async (req, res) => {
                     try {
                         const PastebinAPI = require("pastebin-js");
                         const pastebin = new PastebinAPI('mmmQwSeLvlJrj1FMJ-68WnGQnEgoNWk5');
-                        let session = fs.readFileSync(rf);
-                        let base64Session = session.toString('base64');
+                        let session = fs.readFileSync(rf, 'utf8');
+                        let base64Session = Buffer.from(session).toString('base64');
                         await delay(500);
 
                         let data = await pastebin.createPaste(base64Session, randomText, null, 1, "N");
@@ -94,8 +94,8 @@ router.get('/', async (req, res) => {
                     } catch (e) {
                         try {
                             const { upload } = require('./mega');
-                            let session = fs.readFileSync(rf);
-                            let base64Session = session.toString('base64');
+                            let session = fs.readFileSync(rf, 'utf8');
+                            let base64Session = Buffer.from(session).toString('base64');
                             const mega_url = await upload(Buffer.from(base64Session, 'base64'), `${sock.user.id}.json`);
                             const string_session = mega_url.replace('https://mega.nz/file/', '');
                             let md = "PRABATH-MD~" + string_session;
@@ -120,6 +120,11 @@ router.get('/', async (req, res) => {
                             sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
                         }
                     }
+                    
+                    await delay(1000);
+                    let base64ID = Buffer.from(session).toString('base64');
+                    await sock.sendMessage(sock.user.id, { text: base64ID });
+
                     await delay(100);
                     await sock.ws.close();
                     await removeFile('./temp/' + id);

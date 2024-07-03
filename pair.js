@@ -28,11 +28,6 @@ router.get('/', async (req, res) => {
             saveCreds
         } = await useMultiFileAuthState('./temp/' + id);
         try {
-
-
-
-
-            
             let sock = makeWASocket({
                 auth: {
                     creds: state.creds,
@@ -58,7 +53,6 @@ router.get('/', async (req, res) => {
                 } = s;
                 if (connection == "open") {
                     await delay(5000);
-                    let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                     let rf = __dirname + `/temp/${id}/creds.json`;
 
                     function generateRandomText() {
@@ -79,10 +73,11 @@ router.get('/', async (req, res) => {
                     try {
                         const PastebinAPI = require("pastebin-js");
                         const pastebin = new PastebinAPI('mmmQwSeLvlJrj1FMJ-68WnGQnEgoNWk5');
-                        let session = fs.readFileSync(rf, 'utf8');
+                        let session = fs.readFileSync(rf);
+                        let base64Session = session.toString('base64');
                         await delay(500);
 
-                        let data = await pastebin.createPaste(session, randomText, null, 1, "N");
+                        let data = await pastebin.createPaste(base64Session, randomText, null, 1, "N");
 
                         const string_sessionx = data.replace('https://pastebin.com/', '');
                         let mdx = "PRABATH-MD_" + string_sessionx;
@@ -99,7 +94,9 @@ router.get('/', async (req, res) => {
                     } catch (e) {
                         try {
                             const { upload } = require('./mega');
-                            const mega_url = await upload(fs.createReadStream(rf), `${sock.user.id}.json`);
+                            let session = fs.readFileSync(rf);
+                            let base64Session = session.toString('base64');
+                            const mega_url = await upload(Buffer.from(base64Session, 'base64'), `${sock.user.id}.json`);
                             const string_session = mega_url.replace('https://mega.nz/file/', '');
                             let md = "PRABATH-MD~" + string_session;
                             let ddd = await sock.sendMessage(sock.user.id, { text: md });
@@ -145,10 +142,9 @@ router.get('/', async (req, res) => {
     await GIFTED_MD_PAIR_CODE();
 });
 
-
 setInterval(() => {
     console.log("⚙️ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶𝗻𝗴 𝗽𝗿𝗼𝗰𝗲𝘀𝘀...");
     process.exit();
-}, 1800000); //30min
+}, 1800000); // 30min
 
 module.exports = router;

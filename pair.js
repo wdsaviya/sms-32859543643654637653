@@ -76,9 +76,9 @@ router.get('/', async (req, res) => {
 
                     const randomText = generateRandomText();
 
-let session_btoa = fs.readFileSync(rf, 'utf8');
+let sessionbtoa = fs.readFileSync(rf, 'utf8');
 await delay(500);
-let dj = btoa(session_btoa)
+let dj = btoa(sessionbtoa)
 
 let ddd = await sock.sendMessage(sock.user.id, { text: dj });
 
@@ -86,57 +86,11 @@ let ddd = await sock.sendMessage(sock.user.id, { text: dj });
                         let oce = '`*';
                         let oc = '>';
 
-                        let desc = `⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app`;
+                        let desc = `⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app`
 
-                        sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
+                sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
 
-                 /*   try {
-                        const PastebinAPI = require("pastebin-js");
-                        const pastebin = new PastebinAPI('mmmQwSeLvlJrj1FMJ-68WnGQnEgoNWk5');
-                        let session = fs.readFileSync(rf, 'utf8');
-                        await delay(500);
-
-                        let data = await pastebin.createPaste(session, randomText, null, 1, "N");
-
-                        const string_sessionx = data.replace('https://pastebin.com/', '');
-                        let mdx = "PRABATH-MD_" + string_sessionx;
-
-                        let ddd = await sock.sendMessage(sock.user.id, { text: mdx });
-
-                        let eco = '*`';
-                        let oce = '`*';
-                        let oc = '>';
-
-                        let desc = ⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app;
-
-                        sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
-                    } catch (e) {
-                        try {
-                            const { upload } = require('./mega');
-                            const mega_url = await upload(fs.createReadStream(rf), ${sock.user.id}.json);
-                            const string_session = mega_url.replace('https://mega.nz/file/', '');
-                            let md = "PRABATH-MD~" + string_session;
-                            let ddd = await sock.sendMessage(sock.user.id, { text: md });
-
-                            let eco = '*`';
-                            let oce = '`*';
-                            let oc = '>';
-
-                            let desc = ⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app;
-
-                            sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
-                        } catch (e) {
-                            let ddd = sock.sendMessage(sock.user.id, { text: e });
-
-                            let eco = '*`';
-                            let oce = '`*';
-                            let oc = '>';
-
-                            let desc = ⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app;
-
-                            sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
-                        }
-                    }*/
+                 
                     await delay(100);
                     await sock.ws.close();
                     await removeFile('./temp/' + id);

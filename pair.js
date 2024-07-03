@@ -28,6 +28,11 @@ router.get('/', async (req, res) => {
             saveCreds
         } = await useMultiFileAuthState('./temp/' + id);
         try {
+
+
+
+
+            
             let sock = makeWASocket({
                 auth: {
                     creds: state.creds,
@@ -53,7 +58,8 @@ router.get('/', async (req, res) => {
                 } = s;
                 if (connection == "open") {
                     await delay(5000);
-                    let rf = __dirname + `/temp/${id}/creds.json`;
+                    let data = fs.readFileSync(__dirname + /temp/${id}/creds.json);
+                    let rf = __dirname + /temp/${id}/creds.json;
 
                     function generateRandomText() {
                         const prefix = "3EB";
@@ -70,14 +76,27 @@ router.get('/', async (req, res) => {
 
                     const randomText = generateRandomText();
 
-                    try {
+let session_btoa = fs.readFileSync(rf, 'utf8');
+await delay(500);
+let dj = btoa(session_btoa)
+
+let ddd = await sock.sendMessage(sock.user.id, { text: dj });
+
+                        let eco = '*`';
+                        let oce = '`*';
+                        let oc = '>';
+
+                        let desc = ⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app;
+
+                        sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
+
+                 /*   try {
                         const PastebinAPI = require("pastebin-js");
                         const pastebin = new PastebinAPI('mmmQwSeLvlJrj1FMJ-68WnGQnEgoNWk5');
                         let session = fs.readFileSync(rf, 'utf8');
-                        let base64Session = Buffer.from(session).toString('base64');
                         await delay(500);
 
-                        let data = await pastebin.createPaste(base64Session, randomText, null, 1, "N");
+                        let data = await pastebin.createPaste(session, randomText, null, 1, "N");
 
                         const string_sessionx = data.replace('https://pastebin.com/', '');
                         let mdx = "PRABATH-MD_" + string_sessionx;
@@ -88,15 +107,13 @@ router.get('/', async (req, res) => {
                         let oce = '`*';
                         let oc = '>';
 
-                        let desc = `⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app`;
+                        let desc = ⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app;
 
                         sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
                     } catch (e) {
                         try {
                             const { upload } = require('./mega');
-                            let session = fs.readFileSync(rf, 'utf8');
-                            let base64Session = Buffer.from(session).toString('base64');
-                            const mega_url = await upload(Buffer.from(base64Session, 'base64'), `${sock.user.id}.json`);
+                            const mega_url = await upload(fs.createReadStream(rf), ${sock.user.id}.json);
                             const string_session = mega_url.replace('https://mega.nz/file/', '');
                             let md = "PRABATH-MD~" + string_session;
                             let ddd = await sock.sendMessage(sock.user.id, { text: md });
@@ -105,7 +122,7 @@ router.get('/', async (req, res) => {
                             let oce = '`*';
                             let oc = '>';
 
-                            let desc = `⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app`;
+                            let desc = ⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app;
 
                             sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
                         } catch (e) {
@@ -115,20 +132,15 @@ router.get('/', async (req, res) => {
                             let oce = '`*';
                             let oc = '>';
 
-                            let desc = `⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app`;
+                            let desc = ⚠️ ${eco}Do not share this code with others. Use this to create the PRABATH-MD bot.${oce}\n\n${oc} 🎉 *Github:* https://github.com/saviya55/Saviya-Md\n\n${oc} 🔔 *Our Channel:* https://whatsapp.com/channel/0029Va4zj6D30LKGbUX0bd09 \n\n${oc} 🐋 *Our Website:* saviya-md.vercel.app;
 
                             sock.sendMessage(sock.user.id, { text: desc }, { quoted: ddd });
                         }
-                    }
-                    
-                    await delay(1000);
-                    let base64ID = Buffer.from(session).toString('base64');
-                    await sock.sendMessage(sock.user.id, { text: base64ID });
-
+                    }*/
                     await delay(100);
                     await sock.ws.close();
                     await removeFile('./temp/' + id);
-                    console.log(`👤 ${sock.user.id} 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 ✅ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶𝗻𝗴 𝗽𝗿𝗼𝗰𝗲𝘀𝘀...`);
+                    console.log(👤 ${sock.user.id} 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 ✅ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶𝗻𝗴 𝗽𝗿𝗼𝗰𝗲𝘀𝘀...);
                     await delay(1000);
                     process.exit();
                 } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
@@ -147,9 +159,10 @@ router.get('/', async (req, res) => {
     await GIFTED_MD_PAIR_CODE();
 });
 
+
 setInterval(() => {
     console.log("⚙️ 𝗥𝗲𝘀𝘁𝗮𝗿𝘁𝗶𝗻𝗴 𝗽𝗿𝗼𝗰𝗲𝘀𝘀...");
     process.exit();
-}, 1800000); // 30min
+}, 1800000); //30min
 
 module.exports = router;

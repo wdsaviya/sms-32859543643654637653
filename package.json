@@ -1,12 +1,12 @@
 {
-"name": "web-pair",
+"name": "saviya-pair",
     "version": "0.0.1",
-    "description": "A multi functional whatsapp bot Web paircode.",
+    "description": "A multi functional Web paircode.",
     "main": "index.js",
     "scripts": {
-      "start": "pm2 start index.js --deep-monitoring --attach --name prabath-md",
-      "stop": "pm2 stop prabath-md",
-     "restart": "pm2 restart prabath-md"
+      "start": "pm2 start index.js --deep-monitoring --attach --name saviya-md",
+      "stop": "pm2 stop saviya-md",
+     "restart": "pm2 restart saviya-md"
     },
   "dependencies": {
     "@whiskeysockets/baileys": "6.6.0",

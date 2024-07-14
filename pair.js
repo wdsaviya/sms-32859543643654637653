@@ -57,7 +57,7 @@ router.get('/', async (req, res) => {
                     let rf = __dirname + `/temp/${id}/creds.json`;
 
                     function generateRandomText() {
-                        const prefix = "3EB";
+                        const prefix = "SAVIYAMD";
                         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
                         let randomText = prefix;
 

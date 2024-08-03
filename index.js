@@ -30,7 +30,7 @@ function formatUptime(seconds) {
 }
 
 // Endpoint to get server details
-app.get('/server-details', (req, res) => {
+app.get('/sever-details', (req, res) => {
   console.log('Fetching server details...');
   
   osUtils.cpuUsage((cpuUsage) => {

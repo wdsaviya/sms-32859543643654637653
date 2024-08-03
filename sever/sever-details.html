@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://images.pexels.com/photos/1213447/pexels-photo-1213447.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(33, 150, 243, 0.8); /* Semi-transparent blue */
+            border-radius: 10px;
+            box-sizing: border-box;
+            animation: outlineAnimation 2s infinite;
+        }
+        @keyframes outlineAnimation {
+            0% {
+                border-color: rgba(33, 150, 243, 0.8);
+                transform: scale(1);
+            }
+            50% {
+                border-color: rgba(33, 150, 243, 1); /* Solid blue */
+                transform: scale(1.05);
+            }
+            100% {
+                border-color: rgba(33, 150, 243, 0.8);
+                transform: scale(1);
+            }
+        }
+        h1 {
+            font-size: 28px;
+            color: #0d47a1; /* Darker blue */
+            margin-bottom: 20px;
+        }
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(33, 150, 243, 0.3); /* Light blue */
+        }
+        .info:last-child {
+            border-bottom: none;
+        }
+        .info span.label {
+            font-weight: bold;
+            color: #0288d1; /* Medium blue */
+            font-size: 18px;
+        }
+        .info span.value {
+            color: #0277bd; /* Darker blue */
+            font-size: 18px;
+        }
+        #loadingMessage {
+            font-size: 18px;
+            color: #0288d1; /* Medium blue */
+            margin-bottom: 20px;
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .info {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 0;
+            }
+            .info span.label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            .info span.value {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Server Details</h1>
+        <div id="loadingMessage">Loading...</div>
+        <div class="info">
+            <span class="label">RAM Usage:</span> <span class="value" id="ramUsagePercent">Loading...</span>
+        </div>
+        <div class="info">
+            <span class="label">RAM Usage Size:</span> <span class="value" id="ramUsageSize">Loading...</span>
+        </div>
+        <div class="info">
+            <span class="label">CPU Usage:</span> <span class="value" id="cpuUsage">Loading...</span>
+        </div>
+        <div class="info">
+            <span class="label">CPU Brand:</span> <span class="value" id="cpuBrand">Loading...</span>
+        </div>
+        <div class="info">
+            <span class="label">RAM Size:</span> <span class="value" id="ramSize">Loading...</span>
+        </div>
+        <div class="info">
+            <span class="label">Uptime:</span> <span class="value" id="uptime">Loading...</span>
+        </div>
+        <div class="info">
+            <span class="label">CPU Speed:</span> <span class="value" id="cpuSpeed">Loading...</span>
+        </div>
+        <div class="info">
+            <span class="label">OS:</span> <span class="value" id="os">Loading...</span>
+        </div>
+    </div>
+
+    <script>
+        function fetchServerDetails() {
+            fetch('/server-details')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('ramUsagePercent').textContent = data.ramUsagePercent;
+                    document.getElementById('ramUsageSize').textContent = data.ramUsageSize;
+                    document.getElementById('cpuUsage').textContent = data.cpuUsage;
+                    document.getElementById('cpuBrand').textContent = data.cpuBrand;
+                    document.getElementById('ramSize').textContent = data.ramSize;
+                    document.getElementById('uptime').textContent = data.uptime;
+                    document.getElementById('cpuSpeed').textContent = data.cpuSpeed;
+                    document.getElementById('os').textContent = data.os;
+                    document.getElementById('loadingMessage').style.display = 'none';
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                    document.getElementById('loadingMessage').textContent = 'Error loading server details.';
+                });
+        }
+
+        // Fetch server details every second
+        setInterval(fetchServerDetails, 1000);
+
+        // Initial fetch
+        fetchServerDetails();
+    </script>
+</body>
+</html>

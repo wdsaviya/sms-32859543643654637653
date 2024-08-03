@@ -17,8 +17,8 @@ app.use('/pair', async (req, res, next) => {
   res.sendFile(__path + '/pair.html');
 });
 
-app.use('/server-details', async (req, res, next) => {
-  res.sendFile(__path + '/server-details.html');
+app.use('/sever-details', async (req, res, next) => {
+  res.sendFile(__path + '/sever-details.html');
 });
 
 app.use('/', async (req, res, next) => {

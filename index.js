@@ -2,28 +2,20 @@ const express = require('express');
 const os = require('os');
 const osUtils = require('os-utils');
 const app = express();
-__path = process.cwd();
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8000;
-let code = require('./pair');
-require('events').EventEmitter.defaultMaxListeners = 500;
-app.use('/code', code);
+const __path = process.cwd();
 
-app.use('/error', async (req, res, next) => {
-  res.sendFile(__path + '/error.html');
-});
+// Middleware setup
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/pair', async (req, res, next) => {
-  res.sendFile(__path + '/pair.html');
-});
-
-app.use('/sever-details', async (req, res, next) => {
-  res.sendFile(__path + '/sever-details.html');
-});
-
-app.use('/', async (req, res, next) => {
-  res.sendFile(__path + '/main.html');
-});
+// Static file routes
+app.use('/code', require('./pair'));
+app.use('/error', (req, res) => res.sendFile(__path + '/error.html'));
+app.use('/pair', (req, res) => res.sendFile(__path + '/pair.html'));
+app.use('/server-details', (req, res) => res.sendFile(__path + '/server-details.html'));
+app.use('/', (req, res) => res.sendFile(__path + '/main.html'));
 
 // Function to format uptime in days, hours, minutes, and seconds
 function formatUptime(seconds) {
@@ -59,11 +51,9 @@ app.get('/server-details', (req, res) => {
   });
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+// Start the server
 app.listen(PORT, () => {
-  console.log(`💗 Server running on http://localhost:` + PORT);
+  console.log(`💗 Server running on http://localhost:${PORT}`);
 });
 
 module.exports = app;

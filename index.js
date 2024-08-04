@@ -30,7 +30,7 @@ function formatUptime(seconds) {
 }
 
 // Endpoint to get server details
-app.get('/server-details', (req, res) => {
+app.get('/server-details-api', (req, res) => {
     try {
         osUtils.cpuUsage((v) => {
             const cpuSpeedGHz = os.cpus()[0].speed / 1000; // Convert MHz to GHz

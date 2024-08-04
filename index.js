@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/code', require('./pair'));
 app.use('/error', (req, res) => res.sendFile(__path + '/error.html'));
 app.use('/pair', (req, res) => res.sendFile(__path + '/pair.html'));
-app.use('/sever-details', (req, res) => res.sendFile(__path + '/sever-details.html'));
+app.use('/server-details', (req, res) => res.sendFile(__path + '/server-details.html'));
 app.use('/', (req, res) => res.sendFile(__path + '/main.html'));
 
 // Function to format uptime in days, hours, minutes, and seconds
@@ -30,7 +30,7 @@ function formatUptime(seconds) {
 }
 
 // Endpoint to get server details
-app.get('/sever-details-api', (req, res) => {
+app.get('/server-details-api', (req, res) => {
   console.log('Fetching server details...');
   
   osUtils.cpuUsage((cpuUsage) => {

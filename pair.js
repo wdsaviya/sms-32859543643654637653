@@ -11,8 +11,6 @@ const {
     Browsers
 } = require("@whiskeysockets/baileys");
 
-const { upload } = require('./mega');
-
 let router = express.Router();
 
 function removeFile(FilePath) {

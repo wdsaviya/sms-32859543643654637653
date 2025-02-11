@@ -15,6 +15,10 @@ app.use('/pair',async (req, res, next) => {
 res.sendFile(__path + '/pair.html')
 })
 
+app.use('/movie-visper-pair',async (req, res, next) => {
+res.sendFile(__path + '/visper-pair.html')
+})
+
 app.use('/',async (req, res, next) => {
 res.sendFile(__path + '/main.html')
 })

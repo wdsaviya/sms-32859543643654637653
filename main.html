@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SAVIYA-MD | PAIR SITE</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  
   <style>
     * {
       margin: 0;
@@ -123,74 +122,6 @@
       box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
     }
 
-    .server-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      background: transparent;
-      border: 2px solid #a020f0;
-      color: #fff;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      cursor: pointer;
-      text-decoration: none;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      z-index: 2;
-    }
-
-    .server-btn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, #a020f0, #ff00ff, #a020f0);
-      animation: rotate 4s linear infinite;
-      z-index: -1;
-      opacity: 0.3;
-    }
-
-    .server-btn:hover::before {
-      opacity: 0.6;
-    }
-
-    .server-btn:hover {
-      color: #ff00ff;
-      box-shadow: 0 0 15px #ff00ff, 0 0 30px #a020f0;
-      transform: scale(1.1);
-    }
-
-    .server-btn:active {
-      transform: scale(0.95);
-    }
-
-    .server-btn.pulse {
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 5px #a020f0, 0 0 10px #ff00ff;
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 0 15px #ff00ff, 0 0 25px #a020f0;
-        transform: scale(1.05);
-      }
-      100% {
-        box-shadow: 0 0 5px #a020f0, 0 0 10px #ff00ff;
-        transform: scale(1);
-      }
-    }
-
     @media (max-width: 480px) {
       h1 {
         font-size: 28px;
@@ -199,14 +130,6 @@
       .btn, .github-btn {
         font-size: 16px;
         padding: 0.9em 1.5em;
-      }
-
-      .server-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-        bottom: 15px;
-        right: 15px;
       }
     }
   </style>
@@ -223,8 +146,6 @@
   <button onclick="window.open('https://saviya-md.vercel.app/')" class="btn">WEBSITE</button>
   <button class="github-btn" onclick="setTimeout(() => { window.location.href='https://github.com/saviya55/Saviya-Md' }, 1000)">GITHUB</button>
 </div>
-
-<a href="/server-statics" class="server-btn pulse" aria-label="View server statistics">📊</a>
 
 <script>
   const canvas = document.getElementById('matrix');

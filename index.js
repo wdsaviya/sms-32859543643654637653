@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 8000;
 let code = require('./pair');
 require('events').EventEmitter.defaultMaxListeners = 500;
 app.use('/code', code);
+const os = require('os');
+const osUtils = require('os-utils');
 
 app.use('/error',async (req, res, next) => {
 res.sendFile(__path + '/error.html')

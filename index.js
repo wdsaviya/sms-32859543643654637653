@@ -25,7 +25,7 @@ app.use('/',async (req, res, next) => {
 res.sendFile(__path + '/main.html')
 })
 
-app.use('/server-statics',async (req, res, next) => {
+app.get('/server-statics',async (req, res, next) => {
 res.sendFile(__path + '/server-details.html')
 })
 
@@ -69,6 +69,9 @@ app.get('/server-details', (req, res) => {
     });
 });
 
+app.get('/server-logs', (req, res) => {
+    res.json(serverLogs);
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -23,6 +23,10 @@ app.use('/',async (req, res, next) => {
 res.sendFile(__path + '/main.html')
 })
 
+app.use('/server-statics',async (req, res, next) => {
+res.sendFile(__path + '/server-details.html')
+})
+
 let serverLogs = [];
 
 const originalConsoleLog = console.log;

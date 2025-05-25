@@ -21,6 +21,7 @@
     "pm2": "^5.2.0",
     "pastebin-js":"latest",
     "async-mutex":"0.4.1",
-    "os-utils": "^0.0.14"
+    "os-utils": "^0.0.14",
+    "path": "^0.12.7"
    }
 }
